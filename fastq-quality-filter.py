@@ -1,6 +1,7 @@
 from argparse import ArgumentParser
 
 from src import parser
+from src import outputter
 
 def parse_args():
     parser = ArgumentParser()
@@ -17,4 +18,4 @@ if __name__ == "__main__":
 
     filtered_reads = parser.filter_reads(reads, int(args.quality))
 
-    print(filtered_reads)
+    outputter.output_filtered(filtered_reads)
