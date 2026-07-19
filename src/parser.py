@@ -30,6 +30,9 @@ def filter_reads(reads, quality):
         if not read["phred_score"]:
             continue
 
+        if len(read["phred_score"]) != len(read["sequence"]):
+            continue
+
         total_phred = sum(ord(c) - 33 for c in read["phred_score"])
         avg_phred = total_phred / len(read["phred_score"])
 
