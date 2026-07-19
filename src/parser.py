@@ -25,20 +25,14 @@ def parse_fastq(file_path):
 def filter_reads(reads, quality):
     filtered_reads = []
     for read in reads:
-        filtered_read = {}
-        filtered_read["title"] = read["title"]
-        filtered_read["sequence"] = ""
-        filtered_read["phred_score"] = ""
-        print(len(read["sequence"]))
-        print(len(read["phred_score"]))
-        for i in range(0, len(read["sequence"])):
-            phred = ord(read["phred_score"][i]) - 33
-            if phred >= quality:
-                filtered_read["sequence"] += read["sequence"][i]
-                filtered_read["phred_score"] += read["phred_score"][i]
+        if not read["phred_score"]:
+            continue
 
-        filtered_reads.append(filtered_read)
+        total_phred = sum(ord(c) - 33 for c in read["phred_score"])
+        avg_phred = total_phred / len(read["phred_score"])
 
-    for read in filtered_reads:
-        print(read)
-        print()
+        if avg_phred >= quality:
+            filtered_reads.append(read)
+
+    
+    return filtered_reads

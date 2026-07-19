@@ -16,3 +16,5 @@ if __name__ == "__main__":
     reads = parser.parse_fastq(args.path)
 
     filtered_reads = parser.filter_reads(reads, int(args.quality))
+
+    print(filtered_reads)
