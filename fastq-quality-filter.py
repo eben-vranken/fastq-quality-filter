@@ -8,7 +8,7 @@ def parse_args():
 
     parser.add_argument("path", help="Path to the FastQ file to be parsed.")
     
-    parser.add_argument("-q", "--quality", required=True, help="Minimum quality to be shown")
+    parser.add_argument("-q", "--quality", type=int, required=True, help="Minimum quality to be shown")
     parser.add_argument("-o", "--output", required=True, help="Path to new filtered file output")
 
     return parser.parse_args()

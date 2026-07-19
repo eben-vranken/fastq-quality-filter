@@ -11,7 +11,7 @@ def parse_fastq(file_path):
             elif line_count == 1:
                 read["sequence"] = line
             elif line_count == 2:
-                read["seperator"] = "+"
+                read["separator"] = "+"
             elif line_count == 3:
                 read["phred_score"] = line
 
